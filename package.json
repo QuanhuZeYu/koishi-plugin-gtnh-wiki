@@ -4,19 +4,33 @@
   "version": "0.0.1",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "homepage": "https://github.com/QuanhuZeYu/koishi-plugin-gtnh-wiki.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/QuanhuZeYu/koishi-plugin-gtnh-wiki.git"
+  },
   "files": [
     "lib",
     "dist"
   ],
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "node build.js",
+    "clean": "node clean.js",
+    "allpub": "npm run build && npm run pubgit && npm run pubnpm",
+    "pubgit": "npm publish --registry=https://npm.pkg.github.com --access=public",
+    "pubnpm": "npm publish --registry=https://registry.npmjs.org --access=public"
+  },
   "keywords": [
     "chatbot",
     "koishi",
     "plugin"
   ],
-  "devDependencies": {},
+  "devDependencies": {
+    "sharp": "^0.33.5"
+  },
   "peerDependencies": {
-    "koishi": "^4.17.11"
+    "koishi": "^4.17.11",
+    "koishi-plugin-puppeteer": "^3.9.0"
   }
 }
