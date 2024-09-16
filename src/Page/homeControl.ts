@@ -107,10 +107,10 @@ async function search(s: string) {
 		}
 		curPage.close()
 		debug(`新页面已捕获，旧页面已关闭`)
-		await searchPage.bringToFront()
-		await sleep(2000)
+		// await searchPage.bringToFront()
+		await tools.pageTools.waitTools.waitNav(searchPage)
 
-		const isSearchPage = await (await searchPage.$('header')).evaluate(e => e.textContent.includes('搜索结果'))
+		const isSearchPage = await (await searchPage.$$('header'))[1]?.evaluate(e => e.textContent.includes('搜索结果'))
 		if(!isSearchPage) {
 			const result = await searchPage.screenshot({
 				fullPage:true
